@@ -4,6 +4,7 @@ const button = document.getElementById("play");
 const result = document.getElementById("result");
 const result2 = document.getElementById("result2");
 const upgrade = document.getElementById("upgrade");
+const broadcast = document.getElementById("broadcast");
 
 let turn = [];
 let turn2 = [];
@@ -29,6 +30,14 @@ function animation(){
         turn2 = Math.ceil(Math.random() * 6);
         dice2.src = `img/kostka${turn2}.png`;
     }
+    else if (upgrades === 2){
+        turn = Math.ceil(Math.random() * 4);
+        turn += 2;
+        dice.src = `img/kostka${turn}.png`;
+        turn2 = Math.ceil(Math.random() * 6);
+        dice2.src = `img/kostka${turn2}.png`;
+        upgrade.style.display = "none";
+    }
 }
 
 
@@ -49,7 +58,12 @@ button.addEventListener(`click`, function() {
                 wins++;
                 points++;
                 console.log("you win");
+                broadcast.innerHTML = "You have won";
+                broadcast.style.display = "inline";
+
             } else {
+                broadcast.innerHTML = "You have lost";
+                broadcast.style.display = "inline";
                 console.log("you lost");
             }
             turn = [];
@@ -69,6 +83,8 @@ upgrade.addEventListener(`click`, () => {
         points -= price;
         result.innerHTML = statistic();
         result2.innerHTML = statistic2();
+        price += 2;
+        upgrade.innerHTML = "even better dice";
     }
 })
 
@@ -90,7 +106,7 @@ function sum2(){
 
 
 function statistic() {
-    let print = `<h3>STATISTICS</h3>`;
+    let print = `<h3>YOUR STATISTICS</h3>`;
     print += `<p>You throw: ${turn}</p>`;
     print += `<p>Throws: ${turns.length} </p>`;
     print += `<p>Your throws were: ${turns}</p>`;
@@ -102,11 +118,11 @@ function statistic() {
 }
 
 function statistic2(){
-    let print2 = `<h3>STATISTICS</h3>`;
-    print2 += `<p>You throw: ${turn2}</p>`;
+    let print2 = `<h3>ENEMY STATISTICS</h3>`;
+    print2 += `<p>Enemy throw: ${turn2}</p>`;
     print2 += `<p>Throws: ${turns.length} </p>`;
-    print2 += `<p>Your throws were: ${turns2}</p>`;
-    print2 += `<p>Summary of your throws is: ${sum2()}</p>`;
+    print2 += `<p>Enemy throws were: ${turns2}</p>`;
+    print2 += `<p>Summary of enemy throws is: ${sum2()}</p>`;
     print2 += `<p>Average value of throw is: ${(sum2() / turns2.length).toFixed(2)}</p>`;
     return print2;
 }
