@@ -1,1 +1,1 @@
-# Animovaná kostka v JS
+# Animated dice, made using js

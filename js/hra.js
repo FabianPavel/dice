@@ -8,34 +8,38 @@ const broadcast = document.getElementById("broadcast");
 
 let turn = [];
 let turn2 = [];
-let timer = false;
 let turns = [];
 let turns2 = [];
+
+let timer = false;
 let upgrades = 0;
 let wins = 0;
 let points = 0;
 let price = 1;
 
+let rollSound = new Audio('../sounds/dice_sound.mp3');
+let victorySound = new Audio('../sounds/victory.mp3');
+
 function animation(){
     if (upgrades === 0) {
         turn = Math.ceil(Math.random() * 6);
-        dice.src = `img/kostka${turn}.png`;
+        dice.src = `img/dice${turn}.png`;
         turn2 = Math.ceil(Math.random() * 6);
-        dice2.src = `img/kostka${turn2}.png`;
+        dice2.src = `img/dice${turn2}.png`;
     }
     else if (upgrades === 1){
         turn = Math.ceil(Math.random() * 5);
         turn ++;
-        dice.src = `img/kostka${turn}.png`;
+        dice.src = `img/dice${turn}.png`;
         turn2 = Math.ceil(Math.random() * 6);
-        dice2.src = `img/kostka${turn2}.png`;
+        dice2.src = `img/dice${turn2}.png`;
     }
     else if (upgrades === 2){
         turn = Math.ceil(Math.random() * 4);
         turn += 2;
-        dice.src = `img/kostka${turn}.png`;
+        dice.src = `img/dice${turn}.png`;
         turn2 = Math.ceil(Math.random() * 6);
-        dice2.src = `img/kostka${turn2}.png`;
+        dice2.src = `img/dice${turn2}.png`;
         upgrade.style.display = "none";
     }
 }
@@ -45,6 +49,7 @@ button.addEventListener(`click`, function() {
     if(timer === false){
         timer = setInterval(animation, 40);
         button.innerText = 'STOP'
+        rollSound.play();
     }
     else{
         clearInterval(timer);
@@ -60,6 +65,7 @@ button.addEventListener(`click`, function() {
                 console.log("you win");
                 broadcast.innerHTML = "You have won";
                 broadcast.style.display = "inline";
+                victorySound.play();
 
             } else {
                 broadcast.innerHTML = "You have lost";
