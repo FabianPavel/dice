@@ -4,3 +4,16 @@
 #broadcast{
     display: none;
 }
+.textCenter{
+    text-align: center;
+}
+#close{
+    background: red;
+    color: aliceblue;
+}
+.restore{
+    display: none;
+}
+.text{
+    color: red;
+}

@@ -9,13 +9,23 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
-    <body>
+    <body id="dark">
+    <div id="delete">
         <header class="jumbotron bg-warning">
             <h1 class="display-3 text-light text-center">DICES</h1>
         </header>
         <main class="container">
+            <div class="row mt-3" id="rules">
+                <div class="col-md-12 alert alert-warning">
+                    <div class="row mt-3">
+                    <h3 class="col-md-11 textCenter">RULES</h3>
+                    <button class="col-md-1" id="close">X</button>
+                    </div>
+                    <p>This game is really simple, after clicking "Play" button dices will be thrown for you and your enemy after 3 rounds whoever have higher summary of throws win. If you win you will get win points for which you can upgrade your dice for better chance of throwing high numbers. Both you and your Enemy have 10 lives if you lose them all you die but if you beat your enemy 10 times before that you win and survives. </p>
+                </div>
+            </div>
             <div class="row mt-3">
-                <div>
+                <div class="col-md-12 textCenter">
                     <p id="broadcast"></p>
                 </div>
                 <div class="col-md-6 col-sm-12">
@@ -29,13 +39,18 @@
                 <button class="btn btn-danger" id="play">PLAY</button>
             </div>
             <div>
-                <button id="upgrade">Better dice</button>
+                <button id="upgrade" title="Upgrade your dice, so you will throw higher numbers" >Better dice | price: 2</button>
             </div>
             <div class="row mt-3">
                 <div id="result" class="col-md-6 alert alert-warning">YOU</div>
                 <div id="result2" class="col-md-6 alert alert-warning">ENEMY</div>
             </div>
         </main>
+    </div>
+    <div class="restore" id="restore">
+        <p class="text">YOU DIED</p>
+        <button id="again">PLAY AGAIN</button>
+    </div>
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
